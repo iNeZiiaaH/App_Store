@@ -27,4 +27,14 @@ class ProductController extends AbstractController
             'product' => $product
         ]);
     }
+
+    #[Route('/accueil', name: 'product_discount')]
+    public function discount(ProductRepository $productRepository): Response
+    {      
+        $products = $productRepository->findBy(['discount' => true]);
+
+        return $this->render('product/discount.html.twig', [
+            'products' => $products
+        ]);
+    }
 }

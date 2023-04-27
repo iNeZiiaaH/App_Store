@@ -10,11 +10,13 @@ use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
+    private const NB_PRODUCTS = 50;
+    private const NB_CATEGORIES = 10;
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
         $categories = [];
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < self::NB_CATEGORIES; $i++) {
 
             $category = new Category();
             $category
@@ -23,7 +25,7 @@ class AppFixtures extends Fixture
             $categories[] = $category;
             $manager->persist($category);
         }
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < self::NB_PRODUCTS; $i++) {
             $product = new Product();
             $product
                 ->setName($faker->word)

@@ -1,14 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ product.name }}</h1>
-
-    <p>{{ product.description }}</p>
-    <p>{{ product.price }} €</p>
-    <p>Catégorie : {{ product.category.name }}</p>
-    {% if product.discount %}
-        <p>En promo</p>
-    {% endif %}
-
-    <a href="{{ path('product_list') }}">Retour à la liste des produits</a>
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-body">
+						<h1 class="card-title">{{ product.name }}</h1>
+						<p class="card-text">{{ product.description }}</p>
+						<p class="card-text">{{ product.price }}
+							€</p>
+						<p class="card-text">Catégorie :
+							{{ product.category.name }}</p>
+						{% if product.discount %}
+							<span class="badge badge-success">En promo</span>
+						{% endif %}
+						<a href="{{ path('product_list') }}" class="btn btn-secondary mt-3">Retour à la liste des produits</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

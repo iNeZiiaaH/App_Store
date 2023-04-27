@@ -1,34 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les produits
-{% endblock %}
-
 {% block body %}
 	<div class="container">
-		<h1 class="text-center">Liste des produits</h1>
+		<h1 class="text-center">Produits en promotion</h1>
+
 		<div class="row">
 			{% for product in products %}
 				<div class="col-md-4">
 					<div class="card mb-4 shadow-sm">
 						<div class="card-body">
-							<h2 class="card-title">{{ product.name }}</h2>
+							<h5 class="card-title">{{ product.name }}</h5>
 							<p class="card-text">{{ product.description }}</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="btn-group">
-									<a href="{{ path('product_item', {'id': product.id}) }}" class="btn btn-sm btn-outline-secondary">Détails</a>
+									<a href="{{ path('product_item', {'id': product.id}) }}" class="btn btn-sm btn-outline-secondary">Voir le produit</a>
 								</div>
 								<small class="text-muted">{{ product.price }}
 									€</small>
 							</div>
-							{% if product.discount %}
-								<span class="badge badge-success">En promotion</span>
-							{% endif %}
 						</div>
 					</div>
-				</div>
-			{% else %}
-				<div class="col-md-12">
-					<p class="text-center">Aucun produit trouvé.</p>
 				</div>
 			{% endfor %}
 		</div>
